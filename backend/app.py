@@ -1,6 +1,6 @@
 from flask import Flask, render_template, request, jsonify
-from json_scraper import search_reddit_json
-from ai_templates import generate_dm_templates
+from backend.json_scraper import search_reddit_json
+from backend.ai_templates import generate_dm_templates
 
 print("Using Reddit JSON API (no authentication required)")
 
