@@ -15,8 +15,12 @@ def search():
     data = request.json
     keywords = data.get('keywords', '')
 
+    print(f"🔍 SEARCH REQUEST: '{keywords}'")  # Log the search
+
     # Search Reddit using JSON API (no auth required)
     results = search_reddit_json(keywords)
+
+    print(f"✅ SEARCH COMPLETE: Found {len(results)} results for '{keywords}'")
 
     # Don't generate AI templates yet - return results immediately
     return jsonify({'results': results})
@@ -28,8 +32,12 @@ def generate_dm():
     title = data.get('title', '')
     snippet = data.get('snippet', '')
 
+    print(f"🤖 DM GENERATION REQUEST for u/{username}")
+
     # Generate DM templates for this specific post
     templates = generate_dm_templates(username, title, snippet)
+
+    print(f"✅ DM TEMPLATES GENERATED for u/{username}")
 
     return jsonify({'dm_templates': templates})
 
